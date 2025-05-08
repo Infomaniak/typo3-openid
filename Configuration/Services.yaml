@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Infomaniak\Auth\:
+    resource: '../Classes/*'
+
+  Infomaniak\Auth\Service\OpenIdConnectService:
+    public: true
+
+  Infomaniak\Auth\EventListener\ProcessRequestTokenListener:
+    tags:
+      - name: event.listener
+        identifier: 'infomaniak/auth-request-token'
+        event: TYPO3\CMS\Core\Authentication\Event\BeforeRequestTokenProcessedEvent

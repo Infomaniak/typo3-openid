@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="EXT:infomaniak_auth/Resources/Private/Language/locallang.xlf" date="2025-05-06T22:27:13Z" product-name="infomaniak_auth">
+		<header/>
+		<body>
+			<trans-unit id="error.notAllowed.title" resname="error.notAllowed.title">
+				<source>Not allowed</source>
+				<target>Non autorisé</target>
+			</trans-unit>
+			<trans-unit id="error.notAllowed.description" resname="error.notAllowed.description">
+				<source>You are not allowed to login</source>
+				<target>Vous n&#039;êtes pas autorisé à vous connecter à ce site</target>
+			</trans-unit>
+			<trans-unit id="login.link" resname="login.link">
+				<source>Login with your Infomaniak account</source>
+				<target>S&#039;identifier avec votre compte Infomaniak</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

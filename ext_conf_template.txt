@@ -1,0 +1,48 @@
+# customcategory=client=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:cat.client
+# customcategory=server=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:cat.server
+# customcategory=beuser=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:cat.beuser
+# customcategory=feuser=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:cat.feuser
+
+# customsubcategory=oidc=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:subcat.oidc
+# customsubcategory=urls=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:subcat.urls
+# customsubcategory=permissions=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:subcat.permissions
+# customsubcategory=groups=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:subcat.groups
+
+# cat=client/oidc/a; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.clientId
+clientId =
+
+# cat=client/oidc/b; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.clientSecret
+clientSecret =
+
+# cat=client/oidc/c; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.clientScopes
+clientScopes = openid profile email
+
+
+# cat=beuser/permissions/a; type=boolean; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.beuser.createIfNotExist
+beuser.createIfNotExist = 1
+
+# cat=beuser/permissions/b; type=boolean; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.beuser.updateIfExist
+beuser.updateIfExist = 1
+
+# cat=beuser/permissions/c; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.beuser.defaultGroups
+beuser.defaultGroups =
+
+
+# cat=feuser/permissions/a; type=boolean; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.feuser.createIfNotExist
+feuser.createIfNotExist = 1
+
+# cat=feuser/permissions/b; type=boolean; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.feuser.updateIfExist
+feuser.updateIfExist = 1
+
+# cat=feuser/permissions/c; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.feuser.defaultGroups
+feuser.defaultGroups =
+
+
+# cat=server/urls/a; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.endpointAuthorize
+endpointAuthorize = https://login.infomaniak.com/authorize
+
+# cat=server/urls/b; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.endpointToken
+endpointToken = https://login.infomaniak.com/token
+
+# cat=server/urls/c; type=string; label=LLL:EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf:settings.endpointUserInfo
+endpointUserInfo = https://login.infomaniak.com/oauth2/userinfo

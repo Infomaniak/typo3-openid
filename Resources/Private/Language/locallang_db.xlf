@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf" date="2025-05-06T23:06:39Z" product-name="infomaniak_auth">
+		<header/>
+		<body>
+			<trans-unit id="be_users.infomaniak_auth_id" resname="be_users.infomaniak_auth_id">
+				<source>Infomaniak Identifier</source>
+			</trans-unit>
+			<trans-unit id="cat.beuser" resname="cat.beuser">
+				<source>BE User</source>
+			</trans-unit>
+			<trans-unit id="cat.client" resname="cat.client">
+				<source>Config</source>
+			</trans-unit>
+			<trans-unit id="cat.feuser" resname="cat.feuser">
+				<source>FE User</source>
+			</trans-unit>
+			<trans-unit id="cat.server" resname="cat.server">
+				<source>Server</source>
+			</trans-unit>
+			<trans-unit id="fe.login" resname="fe.login">
+				<source>Login</source>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_infomaniak_auth" resname="fe_users.tx_infomaniak_auth">
+				<source>Infomaniak Identifier</source>
+			</trans-unit>
+			<trans-unit id="settings.beuser.createIfNotExist" resname="settings.beuser.createIfNotExist">
+				<source>Create the user if they don&#039;t already exist</source>
+			</trans-unit>
+			<trans-unit id="settings.beuser.defaultGroups" resname="settings.beuser.defaultGroups">
+				<source>Default groups (groups uids separated by commas)</source>
+			</trans-unit>
+			<trans-unit id="settings.beuser.updateIfExist" resname="settings.beuser.updateIfExist">
+				<source>Update the user if they already exist</source>
+			</trans-unit>
+			<trans-unit id="settings.clientId" resname="settings.clientId">
+				<source>Client ID</source>
+			</trans-unit>
+			<trans-unit id="settings.clientScopes" resname="settings.clientScopes">
+				<source>Client Scopes (space separated values)</source>
+			</trans-unit>
+			<trans-unit id="settings.clientSecret" resname="settings.clientSecret">
+				<source>Client Secret</source>
+			</trans-unit>
+			<trans-unit id="settings.endpointAuthorize" resname="settings.endpointAuthorize">
+				<source>Endpoint URI for authorization</source>
+			</trans-unit>
+			<trans-unit id="settings.endpointToken" resname="settings.endpointToken">
+				<source>Endpoint URI for token</source>
+			</trans-unit>
+			<trans-unit id="settings.endpointUserInfo" resname="settings.endpointUserInfo">
+				<source>Endpoint URI for user information</source>
+			</trans-unit>
+			<trans-unit id="settings.feuser.createIfNotExist" resname="settings.feuser.createIfNotExist">
+				<source>Create the user if they don&#039;t already exist</source>
+			</trans-unit>
+			<trans-unit id="settings.feuser.defaultGroups" resname="settings.feuser.defaultGroups">
+				<source>Default groups (groups uids separated by commas)</source>
+			</trans-unit>
+			<trans-unit id="settings.feuser.updateIfExist" resname="settings.feuser.updateIfExist">
+				<source>Update the user if they already exist</source>
+			</trans-unit>
+			<trans-unit id="subcat.groups" resname="subcat.groups">
+				<source>Groups</source>
+			</trans-unit>
+			<trans-unit id="subcat.oidc" resname="subcat.oidc">
+				<source>OIDC</source>
+			</trans-unit>
+			<trans-unit id="subcat.permissions" resname="subcat.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="subcat.urls" resname="subcat.urls">
+				<source>Urls and paths</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,8 @@
+infomaniakOauthCallback = PAGE
+infomaniakOauthCallback {
+  10 = EXTBASEPLUGIN
+  10 {
+    extensionName = InfomaniakAuth
+    pluginName = InfomaniakAuthLogin
+  }
+}

@@ -1,0 +1,15 @@
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      'oauthcallback': 1743682041
+
+
+  AuthLogin:
+    type: Extbase
+    namespace: tx_infomaniakauth_login
+    defaultController: 'InfomaniakAuthLogin::login'
+    routes:
+      -
+        routePath: '/login'
+        _controller: 'InfomaniakAuthLogin::login'

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="EXT:infomaniak_auth/Resources/Private/Language/locallang_db.xlf" date="2025-05-06T23:06:39Z" product-name="infomaniak_auth">
+		<header/>
+		<body>
+			<trans-unit id="be_users.infomaniak_auth_id" resname="be_users.infomaniak_auth_id">
+				<source>Infomaniak Identifier</source>
+				<target>Identifiant Infomaniak</target>
+			</trans-unit>
+			<trans-unit id="cat.beuser" resname="cat.beuser">
+				<source>BE User</source>
+				<target>Utilisateur BE</target>
+			</trans-unit>
+			<trans-unit id="cat.client" resname="cat.client">
+				<source>Config</source>
+				<target>Configuration</target>
+			</trans-unit>
+			<trans-unit id="cat.feuser" resname="cat.feuser">
+				<source>FE User</source>
+				<target>Utilisateur FE</target>
+			</trans-unit>
+			<trans-unit id="cat.server" resname="cat.server">
+				<source>Server</source>
+				<target>Serveur</target>
+			</trans-unit>
+			<trans-unit id="fe.login" resname="fe.login">
+				<source>Login</source>
+				<target>Connexion</target>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_infomaniak_auth" resname="fe_users.tx_infomaniak_auth">
+				<source>Infomaniak Identifier</source>
+				<target>Identifiant Infomaniak</target>
+			</trans-unit>
+			<trans-unit id="settings.beuser.createIfNotExist" resname="settings.beuser.createIfNotExist">
+				<source>Create the user if they don&#039;t already exist</source>
+				<target>Créer l&#039;utilisateur s&#039;il n&#039;existe pas déjà</target>
+			</trans-unit>
+			<trans-unit id="settings.beuser.defaultGroups" resname="settings.beuser.defaultGroups">
+				<source>Default groups (groups uids separated by commas)</source>
+				<target>Groupes par défaut (uids des groupes séparés par des virgules)</target>
+			</trans-unit>
+			<trans-unit id="settings.beuser.updateIfExist" resname="settings.beuser.updateIfExist">
+				<source>Update the user if they already exist</source>
+				<target>Mettre à jour l&#039;utilisateur s&#039;il existe déjà</target>
+			</trans-unit>
+			<trans-unit id="settings.clientId" resname="settings.clientId">
+				<source>Client ID</source>
+				<target>Client ID</target>
+			</trans-unit>
+			<trans-unit id="settings.clientScopes" resname="settings.clientScopes">
+				<source>Client Scopes (space separated values)</source>
+				<target>Client Scopes (séparés par des espaces)</target>
+			</trans-unit>
+			<trans-unit id="settings.clientSecret" resname="settings.clientSecret">
+				<source>Client Secret</source>
+				<target>Client Secret</target>
+			</trans-unit>
+			<trans-unit id="settings.endpointAuthorize" resname="settings.endpointAuthorize">
+				<source>Endpoint URI for authorization</source>
+				<target>URI finale pour l&#039;autorisation</target>
+			</trans-unit>
+			<trans-unit id="settings.endpointToken" resname="settings.endpointToken">
+				<source>Endpoint URI for token</source>
+				<target>URI finale pour le token</target>
+			</trans-unit>
+			<trans-unit id="settings.endpointUserInfo" resname="settings.endpointUserInfo">
+				<source>Endpoint URI for user information</source>
+				<target>URI finale pour les informations de l&#039;utilisateur</target>
+			</trans-unit>
+			<trans-unit id="settings.feuser.createIfNotExist" resname="settings.feuser.createIfNotExist">
+				<source>Create the user if they don&#039;t already exist</source>
+				<target>Créer l&#039;utilisateur s&#039;il n&#039;existe pas déjà</target>
+			</trans-unit>
+			<trans-unit id="settings.feuser.defaultGroups" resname="settings.feuser.defaultGroups">
+				<source>Default groups (groups uids separated by commas)</source>
+				<target>Groupes par défaut (uids des groupes séparés par des virgules)</target>
+			</trans-unit>
+			<trans-unit id="settings.feuser.updateIfExist" resname="settings.feuser.updateIfExist">
+				<source>Update the user if they already exist</source>
+				<target>Mettre à jour l&#039;utilisateur s&#039;il existe déjà</target>
+			</trans-unit>
+			<trans-unit id="subcat.groups" resname="subcat.groups">
+				<source>Groups</source>
+				<target>Groupes</target>
+			</trans-unit>
+			<trans-unit id="subcat.oidc" resname="subcat.oidc">
+				<source>OIDC</source>
+				<target>OIDC</target>
+			</trans-unit>
+			<trans-unit id="subcat.permissions" resname="subcat.permissions">
+				<source>Permissions</source>
+				<target>Permissions</target>
+			</trans-unit>
+			<trans-unit id="subcat.urls" resname="subcat.urls">
+				<source>Urls and paths</source>
+				<target>Urls et chemins</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

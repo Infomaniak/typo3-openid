@@ -1,0 +1,16 @@
+<f:layout name="Login" />
+
+<f:section name="loginFormFields">
+
+    <f:if condition="{messages}">
+        <f:for each="{messages}" as="message">
+            <div class="alert alert-danger" role="alert">
+                {message.message}
+            </div>
+        </f:for>
+    </f:if>
+
+    <div class="form-group typo3-login-container">
+        <f:image height="30" src="EXT:infomaniak_auth/Resources/Public/Icons/LogoRectangle.svg"/>
+    </div>
+</f:section>

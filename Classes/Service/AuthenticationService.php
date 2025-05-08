@@ -119,10 +119,8 @@ class AuthenticationService extends AbstractAuthenticationService
     {
         // This is not a valid user authenticated via OIDC
         if (empty($user[self::AUTH_INFOMANIAK_DB_FIELD])) {
-            dump('User not authenticated via OIDC');
             return self::STATUS_AUTHENTICATION_FAILURE_CONTINUE;
         }
-        dump('User authenticated via OIDC');
         return self::STATUS_AUTHENTICATION_SUCCESS_BREAK;
     }
 
@@ -480,5 +478,23 @@ class AuthenticationService extends AbstractAuthenticationService
         );
     }
 
+    /**
+     * Set the login mode
+     * @param string $loginMode
+     * @return string
+     */
+    public function setLoginMode(string $loginMode): string
+    {
+        $this->loginMode = $loginMode;
+    }
+
+    /**
+     * Get the login mode
+     * @return string
+     */
+    public function getLoginMode(): string
+    {
+        return $this->loginMode;
+    }
 
 }

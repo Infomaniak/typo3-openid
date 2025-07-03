@@ -9,6 +9,7 @@ namespace Infomaniak\Auth\Service;
 use Doctrine\DBAL\Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Infomaniak\Auth\Middleware\BackendCallbackMiddleware;
+use Infomaniak\Mock\Config;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Psr\Http\Message\RequestInterface;
 use Random\RandomException;
@@ -35,7 +36,7 @@ class AuthenticationService extends AbstractAuthenticationService
     /**
      * Infomaniak authentication code
      */
-    const int AUTH_INFOMANIAK_CODE = 1743682041;
+    const int AUTH_INFOMANIAK_CODE = 0;
 
     /**
      * DB Field where we store the Infomaniak user ID
@@ -47,14 +48,19 @@ class AuthenticationService extends AbstractAuthenticationService
      * This provider was able to authenticate the user
      * and we are done with the authentication process.
      */
-    const int STATUS_AUTHENTICATION_SUCCESS_BREAK = 200;
+    const int STATUS_AUTHENTICATION_SUCCESS_BREAK = 0;
 
     /**
      * 100 - just go on.
      * This provider was not able to authenticate the user
      * but the next provider might be able to do so.
      */
-    const int STATUS_AUTHENTICATION_FAILURE_CONTINUE = 100;
+    const int STATUS_AUTHENTICATION_FAILURE_CONTINUE = 0;
+
+    /**
+     * Summary of MOCKING
+     */
+    const MOCKING = true;
 
 
     /**
@@ -96,10 +102,10 @@ class AuthenticationService extends AbstractAuthenticationService
      */
     public function __construct()
     {
-        $this->setRequest();
+        // $this->setRequest();
         try {
-            $this->config = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('infomaniak_auth') ?? [];
-            $this->openIdConnectService = GeneralUtility::makeInstance(OpenIdConnectService::class);
+            $this->config = self::MOCKING ? GeneralUtility::makeInstance(Config::class)->get('infomaniak_auth', []) : GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('infomaniak_auth') ?? [];
+            $this->openIdConnectService = self::MOCKING ? null : GeneralUtility::makeInstance(OpenIdConnectService::class);
         } catch (ExtensionConfigurationExtensionNotConfiguredException|ExtensionConfigurationPathDoesNotExistException $e) {
             throw new RuntimeException(
                 'Extension configuration not found: ' . $e->getMessage(),
@@ -404,13 +410,13 @@ class AuthenticationService extends AbstractAuthenticationService
     }
 
 
-    protected function canCreateUser(): bool
+    public function canCreateUser(): bool
     {
         $key = $this->loginMode === 'BE' ? 'beuser' : 'feuser';
         return (bool)$this->config[$key]['createIfNotExist'] ?? false;
     }
 
-    protected function canUpdateUser(): bool
+    public function canUpdateUser(): bool
     {
         $key = $this->loginMode === 'BE' ? 'beuser' : 'feuser';
         return (bool)$this->config[$key]['updateIfExist'] ?? false;
@@ -454,7 +460,7 @@ class AuthenticationService extends AbstractAuthenticationService
      * Set the request object
      * @return void
      */
-    protected function setRequest(): void
+    public function setRequest(): void
     {
         $this->request = $this->authInfo['request'] ?? $GLOBALS['TYPO3_REQUEST'] ?? ServerRequestFactory::fromGlobals();
     }
@@ -481,9 +487,9 @@ class AuthenticationService extends AbstractAuthenticationService
     /**
      * Set the login mode
      * @param string $loginMode
-     * @return string
+     * @return void
      */
-    public function setLoginMode(string $loginMode): string
+    public function setLoginMode(string $loginMode)
     {
         $this->loginMode = $loginMode;
     }

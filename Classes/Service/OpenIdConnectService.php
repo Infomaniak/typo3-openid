@@ -96,6 +96,12 @@ class OpenIdConnectService implements LoggerAwareInterface
         return $this->provider;
     }
 
+    public function generateNonce(int $length = 16): string
+    {
+        // Generate a random nonce for OpenID Connect
+        return bin2hex(random_bytes($length));
+    }
+
     /**
      * Builds the OAuth2 authorization URL with optional custom redirect URI.
      * Stores the state in session for CSRF protection.
@@ -112,7 +118,7 @@ class OpenIdConnectService implements LoggerAwareInterface
         string $context = 'FE'
     ): string {
         $provider = $this->getProvider($request, $context);
-        $options = ['nonce' => bin2hex(random_bytes(16))];
+        $options = ['nonce' => $this->generateNonce()];
         if ($redirectUrl !== null) {
             $options['redirect_uri'] = $redirectUrl;
         }

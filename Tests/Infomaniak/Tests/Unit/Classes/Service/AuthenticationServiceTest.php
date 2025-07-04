@@ -4,7 +4,6 @@ namespace Infomaniak\Tests\Unit\Classes\Service;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use Infomaniak\Auth\Service\AuthenticationService;
-use Infomaniak\Auth\Service\OpenIdConnectService;
 use PHPUnit\Framework\Attributes\DataProvider;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 

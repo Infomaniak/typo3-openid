@@ -1,7 +1,8 @@
 <?php
-namespace Vendor\Extension\Tests\Unit;
+namespace Infomaniak\Tests\Unit\Classes\Service;
 
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Uri;
 use Infomaniak\Auth\Service\AuthenticationService;
 use Infomaniak\Auth\Service\OpenIdConnectService;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -9,7 +10,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class AuthenticationServiceTest extends UnitTestCase
 {
-	public static function buildSimpleUrlProvider()
+	public static function buildSimpleUrlProvider(): array
 	{
 		return [
 			'simple url' => [
@@ -56,7 +57,7 @@ class AuthenticationServiceTest extends UnitTestCase
 
 		$requestMock->expects($this->once())
 			->method('getUri')
-			->willReturn(new \GuzzleHttp\Psr7\Uri('https://example.com'));
+			->willReturn(new Uri('https://example.com'));
 
 		$this->assertSame(
 			$expected,
@@ -65,31 +66,6 @@ class AuthenticationServiceTest extends UnitTestCase
 				$path,
 				$params
 			)
-		);
-	}
-
-	public function testValidateCode()
-	{
-		$_SESSION['infomaniakauth_oidc_state'] = [
-			'code' => 'valid_code',
-			'state' => 'random_state_value',
-		];
-		$requestMock = $this->getMockBuilder(Request::class)
-			->disableOriginalConstructor()
-			->getMock();
-		
-		$openIdConnectService = $this->getMockBuilder(OpenIdConnectService::class)
-			->disableOriginalConstructor()
-			->onlyMethods(['validateCode'])
-			->getMock();
-
-		$openIdConnectService->expects($this->once())
-			->method('validateCode')
-			->willReturn('valid_code');
-
-		$this->assertSame(
-			'valid_code',
-			$openIdConnectService->validateCode(new Request('GET', 'https://example.com'))
 		);
 	}
 }

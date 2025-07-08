@@ -56,10 +56,21 @@ class OpenIdConnectService implements LoggerAwareInterface
 
         // Check if all required keys are present in the configuration. If not, throw an exception.
         foreach ($requiredKeys as $key) {
-            if (empty($this->config[$key])) {
+            if (empty($this->getConfig($key))){
                 throw new InvalidArgumentException("Missing extension configuration: $key", 1715775147);
             }
         }
+    }
+
+    public function getConfig(string $key = null): array|string|null
+    {
+        // If a specific key is requested, return its value or null if not set
+        if ($key !== null) {
+            return $this->config[$key] ?? null;
+        }
+
+        // Otherwise, return the entire configuration array
+        return $this->config;
     }
 
     /**
@@ -80,17 +91,17 @@ class OpenIdConnectService implements LoggerAwareInterface
 
         // Create new provider with configuration and Guzzle client
         $this->provider = new GenericProvider([
-            'clientId' => $this->config['clientId'],
-            'clientSecret' => $this->config['clientSecret'],
+            'clientId' => $this->getConfig('clientId'),
+            'clientSecret' => $this->getConfig('clientSecret'),
             'redirectUri' => $this->buildCallbackUrl(
                 $request,
                 ['type' => AuthenticationService::AUTH_INFOMANIAK_CODE],
                 $context
             ),
-            'urlAuthorize' => $this->config['endpointAuthorize'],
-            'urlAccessToken' => $this->config['endpointToken'],
-            'urlResourceOwnerDetails' => $this->config['endpointUserInfo'],
-            'scopes' => $this->config['clientScopes'],
+            'urlAuthorize' => $this->getConfig('endpointAuthorize'),
+            'urlAccessToken' => $this->getConfig('endpointToken'),
+            'urlResourceOwnerDetails' => $this->getConfig('endpointUserInfo'),
+            'scopes' => $this->getConfig('clientScopes'),
         ]);
 
         return $this->provider;
@@ -98,7 +109,6 @@ class OpenIdConnectService implements LoggerAwareInterface
 
     public function generateNonce(int $length = 16): string
     {
-        // Generate a random nonce for OpenID Connect
         return bin2hex(random_bytes($length));
     }
 

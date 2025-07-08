@@ -15,34 +15,48 @@ class OpenIdConnectServiceTest extends UnitTestCase
 {
 	public function testGenerateNonceReturns16BytesHex()
 	{
-		// On crée l'objet réel (avec un tableau de config bidon pour éviter l'exception)
 		$service = $this->getMockBuilder(OpenIdConnectService::class)
 			->disableOriginalConstructor()
 			->onlyMethods([])
 			->getMock();
 
-		// On appelle la vraie méthode
 		$nonce = $service->generateNonce();
 
-		// bin2hex(random_bytes(16)) retourne une chaîne de 32 caractères hexadécimaux
 		$this->assertEquals(32, strlen($nonce), 'Le nonce doit faire 32 caractères (16 bytes en hex)');
 		$this->assertMatchesRegularExpression('/^[a-f0-9]{32}$/', $nonce, 'Le nonce doit être hexadécimal');
 	}
 
 	public function testGenerateNonceReturns32BytesHex()
 	{
-		// On crée l'objet réel (avec un tableau de config bidon pour éviter l'exception)
 		$service = $this->getMockBuilder(OpenIdConnectService::class)
 			->disableOriginalConstructor()
 			->onlyMethods([])
 			->getMock();
 
-		// On appelle la vraie méthode
 		$nonce = $service->generateNonce(32);
 
-		// bin2hex(random_bytes(32)) retourne une chaîne de 64 caractères hexadécimaux
 		$this->assertEquals(64, strlen($nonce), 'Le nonce doit faire 64 caractères (32 bytes en hex)');
 		$this->assertMatchesRegularExpression('/^[a-f0-9]{64}$/', $nonce, 'Le nonce doit être hexadécimal');
+	}
+
+	public static function generateNonceErrorProvider(): array
+	{
+		return [
+			'0 bytes' => [0],
+			'-1' => [-1],
+		];
+	}
+
+	#[DataProvider('generateNonceErrorProvider')]
+	public function testGenerateNonceReturnsInvalidBytesHex(int $length)
+	{
+		$service = $this->getMockBuilder(OpenIdConnectService::class)
+			->disableOriginalConstructor()
+			->onlyMethods([])
+			->getMock();
+
+		$this->expectException(\ValueError::class);
+		$nonce = $service->generateNonce($length);
 	}
 
 	public static function getAuthorizationUrlProvider(): array
@@ -70,10 +84,6 @@ class OpenIdConnectServiceTest extends UnitTestCase
 		];
 	}
 
-	/**
-	 * @throws Exception
-	 * @throws RandomException
-	 */
 	#[DataProvider('getAuthorizationUrlProvider')]
 	public function testGetAuthorizationUrl(string $expectedUrl, array $options)
 	{

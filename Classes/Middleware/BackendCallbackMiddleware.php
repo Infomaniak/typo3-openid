@@ -35,7 +35,6 @@ class BackendCallbackMiddleware implements MiddlewareInterface
         ) {
             // Inject an additional parameter, 'loginProvider', with a specific value
             $queryParams['loginProvider'] = AuthenticationService::AUTH_INFOMANIAK_CODE;
-
             // Build the TYPO3 login URL by appending query parameters to the base '/typo3/login' path
             $loginUrl = AuthenticationService::buildSimpleUrl($request, '/typo3/login', $queryParams);
 

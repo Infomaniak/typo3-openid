@@ -5,6 +5,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use Infomaniak\Auth\Service\AuthenticationService;
 use PHPUnit\Framework\Attributes\DataProvider;
+use ReflectionClass;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class AuthenticationServiceTest extends UnitTestCase
@@ -66,5 +67,60 @@ class AuthenticationServiceTest extends UnitTestCase
 				$params
 			)
 		);
+	}
+
+	public function testHandleUserData()
+	{
+		$service = $this->getMockBuilder(AuthenticationService::class)
+			->disableOriginalConstructor()
+			->onlyMethods(['getUserFromOidc', 'userExists', 'canUpdateUser', 'getUserByUid', 'userUpdate'])
+			->getMock();
+		
+		$loginModeProperty = new \ReflectionProperty(AuthenticationService::class, 'loginMode');
+		$loginModeProperty->setAccessible(true);
+		$loginModeProperty->setValue($service, 'BE');
+
+		$dbUserProperty = new \ReflectionProperty(AuthenticationService::class, 'db_user');
+		$dbUserProperty->setAccessible(true);
+		$dbUserProperty->setValue($service, ['username_column' => 'username']);
+
+		$authServiceReflection = new ReflectionClass(AuthenticationService::class);
+		$handlerUserDataMethod = $authServiceReflection->getMethod('handlerUserData');
+		$handlerUserDataMethod->setAccessible(true);
+
+		$service->expects($this->once())
+			->method('getUserFromOidc')
+			->willReturn([
+				'sub' => '1234567890abcdef',
+				'username' => 'testuser',
+				'email' => 'email@user.com',
+				'name' => 'user',
+				'realName' => 'Test User',
+				'usergroup' => '1',
+				'username_column' => '1234567890abcdef',
+				'table' => 'fe_users',
+			]);
+
+		$service->expects($this->once())
+			->method('userExists')
+			->willReturn(1);
+		
+		$service->expects($this->once())
+			->method('canUpdateUser')
+			->willReturn(true);
+
+		$service->expects($this->once())
+			->method('userUpdate')
+			->willReturn(1);
+
+		$service->expects($this->once())
+			->method('getUserByUid')
+			->willReturn([
+				'uid' => 1,
+				'username' => 'testuser',
+				'email' => 'email@user.com'
+			]);
+
+		$handlerUserDataMethod->invoke($service);
 	}
 }

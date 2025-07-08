@@ -58,12 +58,6 @@ class AuthenticationService extends AbstractAuthenticationService
     const int STATUS_AUTHENTICATION_FAILURE_CONTINUE = 0;
 
     /**
-     * Summary of MOCKING
-     */
-    const MOCKING = true;
-
-
-    /**
      * Global extension configuration
      *
      * @var array
@@ -104,8 +98,8 @@ class AuthenticationService extends AbstractAuthenticationService
     {
         // $this->setRequest();
         try {
-            $this->config = self::MOCKING ? GeneralUtility::makeInstance(Config::class)->get('infomaniak_auth', []) : GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('infomaniak_auth') ?? [];
-            $this->openIdConnectService = self::MOCKING ? null : GeneralUtility::makeInstance(OpenIdConnectService::class);
+            $this->config = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('infomaniak_auth') ?? [];
+            $this->openIdConnectService = GeneralUtility::makeInstance(OpenIdConnectService::class);
         } catch (ExtensionConfigurationExtensionNotConfiguredException|ExtensionConfigurationPathDoesNotExistException $e) {
             throw new RuntimeException(
                 'Extension configuration not found: ' . $e->getMessage(),

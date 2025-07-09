@@ -62,7 +62,7 @@ class OpenIdConnectService implements LoggerAwareInterface
         }
     }
 
-    public function getConfig(string $key = null): array|string|null
+    public function getConfig(?string $key = null): array|string|null
     {
         // If a specific key is requested, return its value or null if not set
         if ($key !== null) {
